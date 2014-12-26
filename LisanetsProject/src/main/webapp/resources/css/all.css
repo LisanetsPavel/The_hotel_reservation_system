@@ -1,0 +1,361 @@
+/* general styles*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Tahoma, sans-serif;
+	background: #e6ffcc;
+	width:1350px;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;	
+}
+
+#header {
+    padding: 10px;
+    padding-bottom: 5px;
+	margin-bottom: 55px;
+}
+
+p.header {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 11px;
+	line-height: 1.3px;
+}
+
+#content {
+	margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding: 10px;
+    padding-bottom: 80px;
+}
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+ul {
+	list-style:none;
+}
+
+#footer {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#footer p {
+	margin-left: 10px;
+	margin-top: 55px;
+	font-size: 13px;
+	line-height: 1.3px;
+
+}
+
+/* index.html */
+.login-form {
+	width: 430px;
+}
+
+.login-form fieldset {
+	padding-top: 21px;
+	padding-left: 25px;
+	padding-right: 25px;
+	height: 150px;
+	
+	margin-bottom: 25px;
+}
+
+.login-form-heading p {
+	font-weight: bold;
+	margin-top: 0;
+	line-height: 1.3px;
+	padding-bottom: 7px;
+}
+
+.row-input {
+	padding-bottom: 6px;
+}
+
+.row-input label {
+	float: left;
+	width: 100px;
+	text-align: left;
+}
+
+.row-input input {
+	width: 260px;
+}
+
+.password-remember-link a {
+	margin-left: 0;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.row-button input {
+	font-weight: bold;
+	width: 80px;
+	height: 40px;
+	float: right;
+	margin-right: 5px;
+}
+
+.links button {
+	font-weight: bold;
+	height: 40px;
+	width: 160px;
+}
+
+button.new-account {
+	float: left;
+	margin-left: -40px;
+	margin-right: 108px;
+
+}
+
+/* registration-form.html */
+.registration-form {
+	width: 480px;
+}
+
+.registration-form fieldset {
+	padding-top: 21px;
+	padding-left: 25px;
+	padding-right: 25px;
+	height: 268px;
+	margin-bottom: 25px;
+}
+
+.registration-form p {
+	font-weight: bold;
+	margin-top: 0;
+	line-height: 1.3px;
+	padding-bottom: 7px;
+}
+
+.registration-form .row-input label {
+	width: 150px;
+}
+
+.registration-form .row-button {
+	margin-top: 20px;
+}
+
+/* light box */
+.black_overlay {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+ 
+.white_content {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 480px;
+    height: 316px;
+    padding: 16px;
+    background-color: #e6ffcc;
+    z-index:1002;
+    overflow: auto;
+}
+
+.close-button {
+	float: left;
+	font-weight: bold;
+	height: 40px;
+	width: 120px;
+	margin-right: 177px;
+}
+
+.row-button ul {
+	padding-left: 0;
+}
+
+
+/* light box 2*/
+#light2.white_content {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 480px;
+    height: 196px;
+    padding: 16px;
+    background-color: #e6ffcc;
+    z-index:1002;
+    overflow: auto;
+}
+
+#light2 fieldset {
+	height: 150px;
+}
+
+#remind-button {
+	height: 40px;
+	width: 120px;
+	font-weight: bold;
+}
+
+/* lightbox3 */
+#light3.white_content {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 480px;
+    height: 300px;
+    padding: 16px;
+    background-color: #e6ffcc;
+    z-index:1002;
+    overflow: auto;
+}
+
+
+#light3 fieldset {
+	height: 300px;
+}
+
+#standard-select {
+	width: 40px;
+	font-size: 16px;
+}
+
+#standard-select2 {
+	width: 40px;
+	font-size: 16px;
+}
+
+#lux-select {
+	width: 40px;
+	font-size: 16px;
+}
+
+#lux-select2 {
+	width: 40px;
+	font-size: 16px;
+}
+
+#vip-select {
+	width: 40px;
+	font-size: 16px;
+}
+
+#vip-select2 {
+	width: 40px;
+	font-size: 16px;
+}
+
+
+
+#light3 .registration-form label {
+	float: left;
+	width: 350px;
+	
+}
+
+
+
+/* confirmation.html */
+#textarea-field {
+	min-height: 50px;
+	min-width: 420px;
+	max-width: 420px;
+}
+
+.content-heading p {
+	margin-top: 0;
+	line-height: 1.3px;
+	padding-bottom: 7px
+}
+
+/* select-date.html */
+.row-select ul {
+	padding-left: 0;
+}
+
+.row-nights {
+	margin-bottom: 15px;
+}
+
+#day-select {
+	float: left;
+	margin-right: 10px;
+	width: 75px;
+	font-size: 16px;
+}
+
+#month-select {
+	float: left;
+	margin-right: 10px;
+	width: 115px;
+	font-size: 16px;
+}
+
+#year-select {
+	width: 75px;
+	font-size: 16px;
+}
+
+#day-select-out {
+	float: left;
+	margin-right: 10px;
+	width: 75px;
+	font-size: 16px;
+}
+
+#month-select-out {
+	float: left;
+	margin-right: 10px;
+	width: 115px;
+	font-size: 16px;
+}
+
+#year-select-out {
+	width: 75px;
+	font-size: 16px;
+}
+
+
+.date-selection-form fieldset {
+	padding-left: 20px;
+	padding-top: 21px;
+	width: 300px;
+}
+
+#nights-select {
+	font-size: 16px;
+}
+
+#sign-up-button {
+	font-weight: bold;
+	height: 40px;
+	width: 120px;
+	float: left;
+	margin-bottom: 12px;
+}
+
+/* thanks.html */
+.new-order-button {
+	font-weight: bold;
+	height: 40px;
+	width: 120px;
+}
