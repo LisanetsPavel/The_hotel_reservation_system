@@ -1,47 +1,42 @@
 package com.sourceit.lisanets.bean;
 
 public class Guest {
-	private int id_guest;
-	private String first_name;
-	private String last_name;
+	private int idGuest;
+	private String firstName;
+	private String lastName;
 	private String phone;
 	private String email;
 	private String password;
 
-	
-	
-
 	@Override
 	public String toString() {
-		return "Guest [id_guest=" + id_guest + ", first_name=" + first_name
-				+ ", last_name=" + last_name + ", phone=" + phone + ", email="
+		return "Guest [id_guest=" + idGuest + ", first_name=" + firstName
+				+ ", last_name=" + lastName + ", phone=" + phone + ", email="
 				+ email + ", password=" + password + "]";
 	}
 
-
-
-	public int getId_guest() {
-		return id_guest;
+	public int getIdGuest() {
+		return idGuest;
 	}
 
-	public void setId_guest(int id_guest) {
-		this.id_guest = id_guest;
+	public void setIdGuest(int id_guest) {
+		this.idGuest = id_guest;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String first_name) {
+		this.firstName = first_name;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String last_name) {
+		this.lastName = last_name;
 	}
 
 	public String getPhone() {
@@ -68,6 +63,4 @@ public class Guest {
 		this.password = password;
 	}
 
-	
-	
 }

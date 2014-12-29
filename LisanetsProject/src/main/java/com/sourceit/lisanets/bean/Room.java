@@ -2,46 +2,45 @@ package com.sourceit.lisanets.bean;
 
 public class Room {
 
-	private int room_number;
-	private int room_type;
-	private int max_persons;
+	private int roomNumber;
+	private int roomType;
+	private int maxPerson;
+
+	public Room(int room_number, int room_type, int max_persons) {
+		super();
+		this.roomNumber = room_number;
+		this.roomType = room_type;
+		this.maxPerson = max_persons;
+	}
+
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(int room_number) {
+		this.roomNumber = room_number;
+	}
+
+	public int getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(int room_type) {
+		this.roomType = room_type;
+	}
+
+	public int getMaxPerson() {
+		return maxPerson;
+	}
+
+	public void setMaxPerson(int max_persons) {
+		this.maxPerson = max_persons;
+	}
 
 	@Override
 	public String toString() {
 
-		return "Room [room_number=" + room_number + ", room_type=" + room_type
-				+ ", max_persons=" + max_persons + "]";
+		return "Room [room_number=" + roomNumber + ", room_type=" + roomType
+				+ ", max_persons=" + maxPerson + "]";
 	}
-
-	public Room(int room_number, int room_type, int max_persons) {
-		super();
-		this.room_number = room_number;
-		this.room_type = room_type;
-		this.max_persons = max_persons;
-	}
-
-	public int getRoom_number() {
-		return room_number;
-	}
-
-	public void setRoom_number(int room_number) {
-		this.room_number = room_number;
-	}
-
-	public int getRoom_type() {
-		return room_type;
-	}
-
-	public void setRoom_type(int room_type) {
-		this.room_type = room_type;
-	}
-
-	public int getMax_persons() {
-		return max_persons;
-	}
-
-	public void setMax_persons(int max_persons) {
-		this.max_persons = max_persons;
-	}
-
 }

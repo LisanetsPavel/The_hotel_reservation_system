@@ -9,61 +9,59 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class ConnectionFactory {
+import org.apache.log4j.Logger;
 
-	//static FileInputStream input;
-static InputStream input;
+import com.sourceit.lisanets.exceptions.ConnectionException;
+import com.sourceit.lisanets.servlet.ServletController;
+
+public class ConnectionFactory {
+	private static final Logger logger = Logger
+			.getLogger(ConnectionFactory.class);
+	static InputStream input;
 	static final Properties prop = new Properties();
 
-	static{
-	try{
-		
-		//input = new FileInputStream("src/main/resources/config.properties");
-		
-		URLClassLoader cl =  (URLClassLoader)	Thread.currentThread().getContextClassLoader();
-		input =   cl.getResourceAsStream("config.properties");
-		//input = new FileInputStream("WEB-INF/classes/config.properties");
-	   
-		prop.load(input);
-	     } catch (IOException e){
-	    	 e.printStackTrace();
-	     } finally{
-	    	 if (input != null){
-	    		 try {
+	static {
+		try {
+
+			URLClassLoader cl = (URLClassLoader) Thread.currentThread()
+					.getContextClassLoader();
+			input = cl.getResourceAsStream("config.properties");
+
+			prop.load(input);
+		} catch (IOException e) {
+			logger.error(e);
+	       throw new ConnectionException(e);
+		} finally {
+			if (input != null) {
+				try {
 					input.close();
 				} catch (IOException e) {
-					
-					e.printStackTrace();
+					 logger.error(e);
+					 throw new ConnectionException(e);
 				}
-	    	 }
-	     }
-	
+			}
+		}
 
-	
-}
+	}
 	static final String user = prop.getProperty("user");
-	static  final  String password = prop.getProperty("password");
-	static  final  String url = prop.getProperty("url");
-	static  final   String driver = prop.getProperty("driver");
+	static final String password = prop.getProperty("password");
+	static final String url = prop.getProperty("url");
+	static final String driver = prop.getProperty("driver");
 
-	static{
-		
-		
-		
-	
+	static {
+
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new ConnectionException(e);
 		}
 	}
-	
-	
+
 	public static Connection getConnection() throws SQLException {
-		
+
 		return DriverManager.getConnection(url, user, password);
-		
-		
+
 	}
-	
+
 }

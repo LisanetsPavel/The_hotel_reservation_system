@@ -19,6 +19,7 @@ based on the recommendations of the Application Developer's Guide.
 <url-pattern>/index</url-pattern>
 </servlet-mapping>
 
+
 <servlet-mapping>
 <servlet-name>LisanetsProject</servlet-name>
 <url-pattern>/registration.do</url-pattern>
@@ -48,5 +49,19 @@ based on the recommendations of the Application Developer's Guide.
 <servlet-name>LisanetsProject</servlet-name>
 <url-pattern>/select.do</url-pattern>
 </servlet-mapping>
+
+<servlet-mapping>
+<servlet-name>LisanetsProject</servlet-name>
+<url-pattern>/error.do</url-pattern>
+</servlet-mapping>
+
+<error-page>
+    <error-code>404</error-code>
+    <location>/error.do</location>
+</error-page>
+<error-page>
+    <exception-type>java.lang.Throwable</exception-type >
+    <location>/error.do</location>
+</error-page>
 
 </web-app>

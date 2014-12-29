@@ -7,34 +7,41 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.sourceit.lisanets.bean.Order;
+import com.sourceit.lisanets.exceptions.DataBaseExceprion;
+import com.sourceit.lisanets.servlet.ServletController;
 
 public class OrderDAO {
 	private static int increment = getIncrement();
 
+	private static final Logger logger = Logger.getLogger(OrderDAO.class);
+
 	public List<Order> getAll() {
-		List<Order> list = null;
+		List<Order> listOrders = null;
 		try (Connection c = ConnectionFactory.getConnection();
 				java.sql.Statement st = c.createStatement()) {
 			ResultSet result = st.executeQuery("select * from `Order`");
-			list = new ArrayList<Order>();
+			listOrders = new ArrayList<Order>();
 
 			while (result.next()) {
 				Order o = new Order();
-				o.setOrder_id(result.getInt("order_id"));
-				o.setId_guest(result.getInt("guest_id"));
-				o.setCheck_in(result.getString("check-in"));
-				o.setCheck_out(result.getString("check-out"));
-				o.setRoom_number(result.getInt("room_number"));
+				o.setOrderId(result.getInt("order_id"));
+				o.setGuestId(result.getInt("guest_id"));
+				o.setCheckIn(result.getString("check-in"));
+				o.setCheckOut(result.getString("check-out"));
+				o.setRoomNumber(result.getInt("room_number"));
 				o.setStatus(result.getString("status"));
-				list.add(o);
+				listOrders.add(o);
 
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 
-		return list;
+		return listOrders;
 	}
 
 	public void add(Order o) {
@@ -44,18 +51,20 @@ public class OrderDAO {
 			java.sql.PreparedStatement st = c
 					.prepareStatement("insert into `Order` VALUES (0,?, ?,?,?, ?, ?) ");
 
-			st.setInt(1, getOrder_id(o.getId_guest()));
-			st.setInt(2, o.getId_guest());
-			st.setString(3, o.getCheck_in());
-			st.setString(4, o.getCheck_out());
-			st.setInt(5, o.getRoom_number());
+			st.setInt(1, getOrder_id(o.getGuestId()));
+			st.setInt(2, o.getGuestId());
+			st.setString(3, o.getCheckIn());
+			st.setString(4, o.getCheckOut());
+			st.setInt(5, o.getRoomNumber());
 			st.setString(6, o.getStatus());
 
 			st.execute();
 			c.close();
 			st.close();
+			logger.info("order was added:" + o.toString());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 
 	}
@@ -70,7 +79,8 @@ public class OrderDAO {
 			st.execute();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 
 	}
@@ -87,29 +97,31 @@ public class OrderDAO {
 			if (rs.next())
 				return rs.getInt("order_id");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 		increment++;
 		return increment;
 	}
 
-	private boolean checkOrder(Order o) {
+	private boolean checkOrder(Order order) {
 		List<Integer> list = null;
 		try (Connection c = ConnectionFactory.getConnection();
 				PreparedStatement st = c
 						.prepareStatement("SELECT o.room_number FROM `order` o join room r on o.room_number = r.room_number where o.status <> 'closed' and o.`check-in` < ? and o.`check-out` >= ?")) {
-			st.setString(1, o.getCheck_out());
-			st.setString(2, o.getCheck_in());
+			st.setString(1, order.getCheckOut());
+			st.setString(2, order.getCheckIn());
 			list = new ArrayList<Integer>();
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				list.add(rs.getInt(1));
 			}
-			if (list.contains(o.getRoom_number()))
+			if (list.contains(order.getRoomNumber()))
 				return false;
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 		return true;
 	}
@@ -135,9 +147,10 @@ public class OrderDAO {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
-
+		logger.info("statuses was update");
 	}
 
 	public void changeStatus(int guest_id) {
@@ -163,7 +176,8 @@ public class OrderDAO {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 	}
 
@@ -177,7 +191,8 @@ public class OrderDAO {
 			result = rs.getInt(1);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 		return result;
 	}
@@ -194,7 +209,8 @@ public class OrderDAO {
 			rs.next();
 			result = rs.getInt("order_id");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error(e);
+			throw new DataBaseExceprion(e);
 		}
 		return result;
 	}

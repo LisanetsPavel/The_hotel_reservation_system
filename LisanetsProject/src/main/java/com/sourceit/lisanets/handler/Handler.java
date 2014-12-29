@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface Handler {
-   
-	
-	public void doAction(HttpServletRequest request, HttpServletResponse response
-			)throws ServletException,  IOException;
+
+	public void doAction(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException;
 
 }

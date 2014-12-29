@@ -15,14 +15,10 @@ public class HandlerIndex  implements Handler  {
 
       @Override
 	public void doAction(HttpServletRequest request, HttpServletResponse response) throws  IOException, ServletException {
-	
-		  
-		
-		  request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
-			
-			
-		
-		}
+    	
+		  	  request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+
+		} 
      
 	}
 

@@ -14,10 +14,11 @@ public class HandlerThanks implements Handler {
 	@Override
 	public void doAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-	System.out.println("thanks started");
+	
 		Guest user = (Guest) request.getSession().getAttribute("User");
-		new OrderDAO().changeStatus(user.getId_guest());
-        request.getRequestDispatcher("/WEB-INF/views/thanks.jsp").forward(request, response);
+		new OrderDAO().changeStatus(user.getIdGuest());
+		request.getRequestDispatcher("/WEB-INF/views/thanks.jsp").forward(
+				request, response);
 	}
 
 }

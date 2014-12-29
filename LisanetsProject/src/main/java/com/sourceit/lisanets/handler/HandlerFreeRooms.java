@@ -19,28 +19,28 @@ import com.sourceit.lisanets.bean.FreeRoom;
 public class HandlerFreeRooms implements Handler {
 
 	@Override
-	public void doAction(HttpServletRequest req, HttpServletResponse resp)
+	public void doAction(HttpServletRequest request, HttpServletResponse responce)
 			throws IOException, ServletException {
 		new OrderDAO().changeStatus();
 
-		if (!checkCorrectDate(req)) {
-
+		if (!checkCorrectDate(request)) {
+            
 			String json = new Gson().toJson("Error");
 
-			resp.setContentType("application/json");
-			resp.setCharacterEncoding("UTF-8");
-			resp.getWriter().write(json);
+			responce.setContentType("application/json");
+			responce.setCharacterEncoding("UTF-8");
+			responce.getWriter().write(json);
 			return;
 		}
 
-		String check_in = req.getParameter("yearIn") + "-"
-				+ req.getParameter("monthIn") + "-" + req.getParameter("dayIn");
-		String check_out = req.getParameter("yearOut") + "-"
-				+ req.getParameter("monthOut") + "-"
-				+ req.getParameter("dayOut");
+		String check_in = request.getParameter("yearIn") + "-"
+				+ request.getParameter("monthIn") + "-" + request.getParameter("dayIn");
+		String check_out = request.getParameter("yearOut") + "-"
+				+ request.getParameter("monthOut") + "-"
+				+ request.getParameter("dayOut");
 
-		req.getSession().setAttribute("check_in", check_in);
-		req.getSession().setAttribute("check_out", check_out);
+		request.getSession().setAttribute("check_in", check_in);
+		request.getSession().setAttribute("check_out", check_out);
 		List<FreeRoom> listRoom = new RoomDAO().getCountFree(check_in,
 				check_out);
 		List<String> list = new ArrayList<String>();
@@ -49,9 +49,9 @@ public class HandlerFreeRooms implements Handler {
 
 		String json = new Gson().toJson(list);
 
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		resp.getWriter().write(json);
+		responce.setContentType("application/json");
+		responce.setCharacterEncoding("UTF-8");
+		responce.getWriter().write(json);
 
 	}
 
