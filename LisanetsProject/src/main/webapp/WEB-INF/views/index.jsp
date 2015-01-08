@@ -52,13 +52,11 @@
 				</form>
 				<!--links for new user account creation and express booking-->
 				<div class="links">
-					<ul>
-						<li><button class="new-account" type="button"
+					
+						<button class="new-account" type="button"
 								onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Create
-								an account</button></li>
-						<li><button class="express-booking" type="button" onclick="">Express
-								booking</button></li>
-					</ul>
+								an account</button>
+						
 				</div>
 			</div>
 		</div>
@@ -73,32 +71,32 @@
 					</div>
 					<!--first name input field-->
 					<div class="row-input">
-						<label for="first-name-field">First name:</label> <input
+						<label for="first-name-field">First name:</label> <input required
 							id="first-name-field" name="FirstName" type="text"></input>
 					</div>
 					<!--last name input field-->
 					<div class="row-input">
-						<label for="last-name-field">Last name:</label> <input
+						<label for="last-name-field">Last name:</label> <input required
 							id="last-name-field" name="LastName" type="text"></input>
 					</div>
 					<!--phone input field-->
 					<div class="row-input">
-						<label for="phone-field">Phone:</label> <input id="phone-field"
+						<label for="phone-field">Phone:</label> <input required id="phone-field"
 							name="Phone" type="tel"></input>
 					</div>
 					<!--email input field-->
 					<div class="row-input">
-						<label for="email-field">E-mail:</label> <input id="email-field"
+						<label for="email-field">E-mail:</label> <input required id="email-field"
 							name="Email" type="email"></input>
 					</div>
 					<!--password input field-->
 					<div class="row-input">
-						<label for="password-field">Password:</label> <input
+						<label for="password-field">Password:</label> <input required
 							name="Password" id="password-field" type="password"></input>
 					</div>
 					<!--confirm password input field-->
 					<div class="row-input">
-						<label for="confirm-password-field">Repeat password:</label> <input
+						<label for="confirm-password-field">Repeat password:</label> <input required
 						name="RepeatPassword"	id="confirm-password-field" type="password"></input>
 					</div>
 					<!--register submit button-->

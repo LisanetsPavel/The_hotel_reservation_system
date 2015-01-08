@@ -1,10 +1,10 @@
 package com.sourceit.lisanets.exceptions;
 
-public class DataBaseExceprion extends RuntimeException {
+public class DataBaseException extends RuntimeException {
 
 	Throwable cause;
 
-	public DataBaseExceprion(Throwable cause) {
+	public DataBaseException(Throwable cause) {
 		super(cause);
 		this.cause = cause;
 	}

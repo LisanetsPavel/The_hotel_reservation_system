@@ -10,7 +10,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.sourceit.lisanets.bean.Order;
-import com.sourceit.lisanets.exceptions.DataBaseExceprion;
+import com.sourceit.lisanets.exceptions.DataBaseException;
 import com.sourceit.lisanets.servlet.ServletController;
 
 public class OrderDAO {
@@ -26,19 +26,19 @@ public class OrderDAO {
 			listOrders = new ArrayList<Order>();
 
 			while (result.next()) {
-				Order o = new Order();
-				o.setOrderId(result.getInt("order_id"));
-				o.setGuestId(result.getInt("guest_id"));
-				o.setCheckIn(result.getString("check-in"));
-				o.setCheckOut(result.getString("check-out"));
-				o.setRoomNumber(result.getInt("room_number"));
-				o.setStatus(result.getString("status"));
-				listOrders.add(o);
+				Order order = new Order();
+				order.setOrderId(result.getInt("order_id"));
+				order.setGuestId(result.getInt("guest_id"));
+				order.setCheckIn(result.getString("check-in"));
+				order.setCheckOut(result.getString("check-out"));
+				order.setRoomNumber(result.getInt("room_number"));
+				order.setStatus(result.getString("status"));
+				listOrders.add(order);
 
 			}
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 
 		return listOrders;
@@ -64,7 +64,7 @@ public class OrderDAO {
 			logger.info("order was added:" + o.toString());
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 
 	}
@@ -80,7 +80,7 @@ public class OrderDAO {
 
 		} catch (Exception e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 
 	}
@@ -98,7 +98,7 @@ public class OrderDAO {
 				return rs.getInt("order_id");
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 		increment++;
 		return increment;
@@ -121,7 +121,7 @@ public class OrderDAO {
 
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 		return true;
 	}
@@ -148,7 +148,7 @@ public class OrderDAO {
 
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 		logger.info("statuses was update");
 	}
@@ -177,7 +177,7 @@ public class OrderDAO {
 
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 	}
 
@@ -192,7 +192,7 @@ public class OrderDAO {
 
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 		return result;
 	}
@@ -210,7 +210,7 @@ public class OrderDAO {
 			result = rs.getInt("order_id");
 		} catch (SQLException e) {
 			logger.error(e);
-			throw new DataBaseExceprion(e);
+			throw new DataBaseException(e);
 		}
 		return result;
 	}

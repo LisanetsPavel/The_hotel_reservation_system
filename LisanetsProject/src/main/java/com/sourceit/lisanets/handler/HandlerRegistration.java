@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 
 import com.sourceit.lisanets.DAO.GuestDAO;
 import com.sourceit.lisanets.bean.Guest;
-import com.sourceit.lisanets.exceptions.DataBaseExceprion;
+import com.sourceit.lisanets.exceptions.DataBaseException;
 
 public class HandlerRegistration implements Handler {
 
@@ -42,7 +42,7 @@ public class HandlerRegistration implements Handler {
 			new GuestDAO().add(guest);
 		} catch (SQLException e) {
 			logger.error(e.getMessage());
-			 throw new DataBaseExceprion(e);
+			 throw new DataBaseException(e);
 		}
 		request.setAttribute("text", "Registratoin succesed");
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(

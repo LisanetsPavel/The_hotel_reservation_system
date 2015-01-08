@@ -10,7 +10,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.sourceit.lisanets.bean.Guest;
-import com.sourceit.lisanets.exceptions.DataBaseExceprion;
+import com.sourceit.lisanets.exceptions.DataBaseException;
 import com.sourceit.lisanets.servlet.ServletController;
 
 public class GuestDAO {
@@ -28,21 +28,21 @@ public class GuestDAO {
 
 			while (result.next()) {
 
-				Guest g = new Guest();
-				g.setIdGuest(result.getInt(1));
-				g.setFirstName(result.getString(2));
-				g.setLastName(result.getString(3));
-				g.setPhone(result.getString(4));
-				g.setEmail(result.getString(5));
-				g.setPassword(result.getString(6));
+				Guest guest = new Guest();
+				guest.setIdGuest(result.getInt(1));
+				guest.setFirstName(result.getString(2));
+				guest.setLastName(result.getString(3));
+				guest.setPhone(result.getString(4));
+				guest.setEmail(result.getString(5));
+				guest.setPassword(result.getString(6));
 
-				list.add(g);
+				list.add(guest);
 
 			}
 
 		} catch (SQLException e) {
 			logger.error(e);
-            throw new DataBaseExceprion(e);
+            throw new DataBaseException(e);
 		}
 		return list;
 	}
@@ -76,7 +76,7 @@ public class GuestDAO {
 
 		} catch (Exception e) {
 			logger.error(e);
-			 throw new DataBaseExceprion(e);
+			 throw new DataBaseException(e);
 		}
 
 	}
@@ -104,7 +104,7 @@ public class GuestDAO {
 
 		} catch (SQLException e) {
 			logger.error(e);
-			 throw new DataBaseExceprion(e);
+			 throw new DataBaseException(e);
 		}
 		return guest;
 	}

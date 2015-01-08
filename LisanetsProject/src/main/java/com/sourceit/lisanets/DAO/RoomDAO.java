@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.sourceit.lisanets.bean.FreeRoom;
 import com.sourceit.lisanets.bean.Room;
-import com.sourceit.lisanets.exceptions.DataBaseExceprion;
+import com.sourceit.lisanets.exceptions.DataBaseException;
 import com.sourceit.lisanets.servlet.ServletController;
 
 public class RoomDAO {
@@ -31,7 +31,7 @@ public class RoomDAO {
 			}
 		} catch (SQLException e) {
 			logger.error(e);
-			 throw new DataBaseExceprion(e);
+			 throw new DataBaseException(e);
 		}
 
 		return list;
@@ -52,7 +52,7 @@ public class RoomDAO {
 			st.close();
 		} catch (SQLException e) {
 			logger.error(e);
-			 throw new DataBaseExceprion(e);
+			 throw new DataBaseException(e);
 		}
 	}
 
@@ -82,7 +82,7 @@ public class RoomDAO {
 			st.close();
 		} catch (SQLException e) {
 			logger.error(e);
-			 throw new DataBaseExceprion(e);
+			 throw new DataBaseException(e);
 		}
 		return listFreeRoom;
 	}
@@ -105,7 +105,7 @@ public class RoomDAO {
 			}
 		} catch (SQLException e) {
 			logger.error(e);
-			 throw new DataBaseExceprion(e);
+			 throw new DataBaseException(e);
 		}
 
 		return listRoom;
